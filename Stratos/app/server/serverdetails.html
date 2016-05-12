@@ -1,0 +1,37 @@
+﻿<section id="details-view" class="mainbar" data-ng-controller="serverdetails as vm">
+    <section class="matter">
+        <header style="margin-left: -5px;">
+            <h3>Server: {{vm.server.url}}</h3>
+        </header>
+        <form name="editForm" novalidate>
+            <div style="padding-left: 15px;">
+                <div class="row">
+                    URL:
+                    <div>
+                        <input type="text" name="url" data-ng-model="vm.server.url" required class="width70 form-control" />
+                        <span data-ng-show="editForm.url.$dirty && editForm.url.$invalid">URL is required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    Username:
+                    <div>
+                        <input type="text" name="username" data-ng-model="vm.server.username" required class="width70 form-control" />
+                        <span data-ng-show="editForm.username.$dirty && editForm.username.$invalid">Username is required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    Password:
+                    <div>
+                        <input type="text" name="password" data-ng-model="vm.server.password" required class="width70 form-control" />
+                        <span data-ng-show="editForm.password.$dirty && editForm.password.$invalid">Password is required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <button type="submit" ng-disabled="!editForm.$dirty || editForm.$invalid" class="btn btn-primary" style="margin-left: 0; width: 150px; margin-top: 10px;" data-ng-click="vm.Save()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</section>

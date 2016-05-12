@@ -1,0 +1,41 @@
+﻿<section id="list-view" class="mainbar" data-ng-controller="serverlist as vm">
+    <section class="matter">
+        <div class="container">
+            <div ng-show="true" class="alert alert-link" style="margin-bottom: -15px; margin-top: -30px;">
+                <div class="row">
+                    <h2>Servers</h2>
+                    <div class="input-group-addon">
+                        <input type="text" class="form-control" placeholder="Server Filter..." ng-model="vm.search_query">
+                        <span>
+                            <button class="btn btn-success" style="margin-top: -3px;" ng-click="vm.AddServer()">Add Server &nbsp; <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr style="background-color: lightgrey">
+                                <th>URL</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr ng-repeat="server in vm.servers | filter:vm.search_query">
+                                <td>{{server.url}}</td>
+                                <td>{{server.username}}</td>
+                                <td>{{server.password}}</td>
+                                <td>
+                                    <button class="btn btn-warning" ng-click="vm.EditServer(server.id)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="vm.DeleteServer(server.id)" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
