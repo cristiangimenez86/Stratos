@@ -33,6 +33,8 @@
         }
 
         vm.EditServer = function (server) {
+            console.log(clientId);
+            console.log(server);
             $location.path('/serverdetails/' + clientId + '/' + server);
         };
 

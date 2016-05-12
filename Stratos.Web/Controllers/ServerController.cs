@@ -42,9 +42,9 @@ namespace Stratos.Web.Controllers
 
             try
             {
-                var server = new ServerDTO { Id = 3, ClientId = 4, URL = "URL3", Username = "Username3", Password = "password3" };
-                result = Ok(server);
-                //result = Ok(base.Service.GetCars());
+                //var server = new ServerDTO { Id = 3, ClientId = 4, URL = "URL3", Username = "Username3", Password = "password3" };
+                //result = Ok(server);
+                result = Ok(base.Service.GetServer(id));
             }
             catch (Exception)
             {
@@ -63,7 +63,7 @@ namespace Stratos.Web.Controllers
             {
                 if (server.Id == 0)
                 {
-                    //base.Service.InsertCar(client);
+                    base.Service.InsertServer(server);
                     result = Ok();
                 }
 
@@ -82,7 +82,7 @@ namespace Stratos.Web.Controllers
 
             try
             {
-                //base.Service.UpdateCar(client);
+                base.Service.UpdateServer(server);
                 result = Ok();
             }
             catch (Exception)
@@ -100,7 +100,7 @@ namespace Stratos.Web.Controllers
 
             try
             {
-                //base.Service.DeleteCar(id);
+                base.Service.DeleteServer(id);
                 result = Ok();
             }
             catch (Exception)

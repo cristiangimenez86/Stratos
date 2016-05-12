@@ -18,6 +18,7 @@ namespace Stratos.Web
             container.RegisterType<IContext, EntityContext>(new PerRequestLifetimeManager());
             container.RegisterType<IRepository<Client>, BaseRepository<Client>>();
             container.RegisterType<IRepository<Server>, BaseRepository<Server>>();
+            container.RegisterType<ICryptoService, CryptoService>();
 
             return container;
         }

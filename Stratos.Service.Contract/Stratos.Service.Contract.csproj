@@ -42,6 +42,7 @@
     <Compile Include="DTOs\ServerDTO.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="DTOs\ClientDTO.cs" />
+    <Compile Include="ICryptoService.cs" />
     <Compile Include="IServerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
