@@ -5,7 +5,7 @@
         // Angular modules 
         'ngAnimate',        // animations
         'ngRoute',          // routing
-        'ngSanitize',       // sanitizes html bindings (ex: sidebar.js)
+        'ngSanitize',       // sanitizes html bindings
         'angucomplete-alt',
 
         // Custom modules 
@@ -13,11 +13,17 @@
         'common.bootstrap', // bootstrap dialog wrapper functions
 
         // 3rd Party Modules
-        'ui.bootstrap'      // ui-bootstrap (ex: carousel, pagination, dialog)
+        'ui.bootstrap'      // ui-bootstrap
     ]);
     
+    app.config(function ($httpProvider) {
+        if (!$httpProvider.defaults.headers.get) {
+            $httpProvider.defaults.headers.get = {};
+        }
+        //disable IE ajax request caching
+        $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+    });
+    
     // Handle routing errors and success events
-    app.run(['$route',  function ($route) {
-            // Include $route to kick start the router.
-        }]);        
+    app.run(['$route',  function ($route) {}]);        
 })();

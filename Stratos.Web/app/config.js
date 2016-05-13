@@ -15,7 +15,7 @@
     };
 
     var config = {
-        appErrorPrefix: '[HT Error] ', //Configure the exceptionHandler decorator
+        appErrorPrefix: '[Stratos Error] ', //Configure the exceptionHandler decorator
         docTitle: 'Stratos: ',
         events: events,
     };
@@ -37,7 +37,4 @@
         cfg.config.spinnerToggleEvent = config.events.spinnerToggle;
     }]);
     //#endregion
-
-    app.useMocks = false;
-
 })();

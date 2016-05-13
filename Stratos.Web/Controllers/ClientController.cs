@@ -41,7 +41,6 @@ namespace Stratos.Web.Controllers
             return result;
         }
 
-
         public IHttpActionResult Post(ClientDTO client)
         {
             IHttpActionResult result = InternalServerError();

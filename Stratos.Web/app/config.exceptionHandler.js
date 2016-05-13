@@ -1,12 +1,7 @@
-﻿// Include in index.html so that app level exceptions are handled.
-// Exclude from testRunner.html which should run exactly what it wants to run
-(function () {
+﻿(function () {
     'use strict';
     
     var app = angular.module('app');
-
-    // Configure by setting an optional string value for appErrorPrefix.
-    // Accessible via config.appErrorPrefix (via config value).
 
     app.config(['$provide', function ($provide) {
         $provide.decorator('$exceptionHandler',

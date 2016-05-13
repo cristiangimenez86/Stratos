@@ -7,16 +7,16 @@ using System.Linq;
 
 namespace Stratos.Service.Implementation
 {
-    public class ServerService : IServerService
+    public class ServerService : ServiceBase, IServerService
     {
         private readonly IRepository<Server> _serverRepository;
         private readonly IRepository<Client> _clientRepository;
         private readonly ICryptoService _cryptoService;
 
-        public ServerService(IRepository<Server> serverRepository, 
+        public ServerService(
+            IRepository<Server> serverRepository, 
             IRepository<Client> clientRepository,
-            ICryptoService cryptoService
-            )
+            ICryptoService cryptoService)
         {
             _serverRepository = serverRepository;
             _clientRepository = clientRepository;
@@ -41,10 +41,9 @@ namespace Stratos.Service.Implementation
 
         public ServerDTO GetServer(int id)
         {
-            var serverEntity = _serverRepository.Query().SingleOrDefault(x => x.Id == id);
-
             ServerDTO server = null;
 
+            var serverEntity = _serverRepository.Query().SingleOrDefault(x => x.Id == id);
             if (serverEntity != null)
             {
                 server = new ServerDTO

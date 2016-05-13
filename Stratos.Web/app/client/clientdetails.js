@@ -4,8 +4,7 @@
     angular.module('app').controller(controllerId, ['common', 'datacontext', '$location', '$routeParams', clientdetails]);
 
     function clientdetails(common, datacontext, $location, $routeParams) {
-        var getLogFn = common.logger.getLogFn;
-        var log = getLogFn(controllerId);
+        var logError = common.logger.getLogFn(controllerId, 'error');
 
         var vm = this;
         var clientId = ($routeParams.clientId) || 0;
@@ -16,7 +15,7 @@
 
         function activate() {
             var promises = [];
-            
+
             if (clientId != 0) {
                 promises = [getClient()];
             }
@@ -25,9 +24,8 @@
 
         function getClient() {
             return datacontext.getClient(clientId).then(function (data) {
-                console.log(data);
                 return vm.client = data.data;
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
 
         vm.Save = function () {
@@ -37,20 +35,20 @@
             } else {
                 promises = [updateClient()];
             }
-            
+
             common.activateController(promises, controllerId);
         };
 
         function insertClient() {
             return datacontext.insertClient(vm.client).then(function () {
                 $location.path('/clientlist/');
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
-        
+
         function updateClient() {
             return datacontext.updateClient(vm.client).then(function () {
                 $location.path('/clientlist/');
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
     }
 })();

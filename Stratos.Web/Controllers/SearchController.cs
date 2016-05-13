@@ -6,9 +6,7 @@ namespace Stratos.Web.Controllers
 {
     public class SearchController : ApiControllerBase<IClientService>
     {
-        public SearchController(IClientService service) : base(service)
-        {
-        }
+        public SearchController(IClientService service) : base(service) { }
 
         public IHttpActionResult Get(string id)
         {

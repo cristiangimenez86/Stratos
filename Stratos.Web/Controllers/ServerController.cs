@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using Stratos.Service.Contract;
+﻿using Stratos.Service.Contract;
 using Stratos.Service.Contract.DTOs;
+using System;
+using System.Web.Http;
 
 namespace Stratos.Web.Controllers
 {
@@ -18,14 +15,6 @@ namespace Stratos.Web.Controllers
 
             try
             {
-                //var servers = new List<ServerDTO>
-                //{
-                //    new ServerDTO { Id = 1, ClientId = 4, URL = "URL1", Username = "Username1", Password = "password1"},
-                //    new ServerDTO { Id = 2, ClientId = 4, URL = "URL2", Username = "Username2", Password = "password2"},
-                //    new ServerDTO { Id = 3, ClientId = 4, URL = "URL3", Username = "Username3", Password = "password3"},
-                //    new ServerDTO { Id = 4, ClientId = 4, URL = "URL4", Username = "Username4", Password = "password4"}
-                //};
-                //result = Ok(servers);
                 result = Ok(base.Service.GetServers(cliendId));
             }
             catch (Exception)
@@ -42,8 +31,6 @@ namespace Stratos.Web.Controllers
 
             try
             {
-                //var server = new ServerDTO { Id = 3, ClientId = 4, URL = "URL3", Username = "Username3", Password = "password3" };
-                //result = Ok(server);
                 result = Ok(base.Service.GetServer(id));
             }
             catch (Exception)
@@ -53,7 +40,6 @@ namespace Stratos.Web.Controllers
 
             return result;
         }
-
 
         public IHttpActionResult Post(ServerDTO server)
         {

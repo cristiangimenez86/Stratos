@@ -3,7 +3,6 @@
 
     var app = angular.module('app');
 
-
     app.directive('ccScrollToTop', ['$window',
         // Usage:
         // <span data-cc-scroll-to-top></span>
@@ -26,8 +25,6 @@
 
                 element.find('a').click(function (e) {
                     e.preventDefault();
-                    // Learning Point: $anchorScroll works, but no animation
-                    //$anchorScroll();
                     $('body').animate({ scrollTop: 0 }, 500);
                 });
 
@@ -60,5 +57,4 @@
             }, true);
         }
     }]);
-
 })();

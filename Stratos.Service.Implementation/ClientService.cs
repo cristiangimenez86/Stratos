@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Stratos.DataAccess.Repositories;
+﻿using Stratos.DataAccess.Repositories;
 using Stratos.DomainModel;
 using Stratos.Service.Contract;
 using Stratos.Service.Contract.DTOs;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Stratos.Service.Implementation
 {
@@ -18,7 +15,6 @@ namespace Stratos.Service.Implementation
         {
             _clientRepository = clientRepository;
         }
-
 
         public IEnumerable<ClientDTO> GetClients()
         {
@@ -59,7 +55,6 @@ namespace Stratos.Service.Implementation
 
         public IEnumerable<ClientDTO> SearchClients(string criteria)
         {
-
             var clientsEntity = _clientRepository.Query().Where(x => x.Name.Contains(criteria)).ToList();
 
             var clientsDto = clientsEntity.Select(

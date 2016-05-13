@@ -4,12 +4,9 @@
     angular.module('app').controller(controllerId, ['common', 'datacontext', '$location', clientlist]);
 
     function clientlist(common, datacontext, $location) {
-        var getLogFn = common.logger.getLogFn;
-        var log = getLogFn(controllerId);
+        var logError = common.logger.getLogFn(controllerId, 'error');
 
         var vm = this;
-        vm.messageCount = 0;
-
         vm.clients = null;
         vm.clientsForAutocomplete = [];
 
@@ -24,7 +21,7 @@
             return datacontext.getClients().then(function (data) {
                 vm.clientsForAutocomplete = data.data;
                 return vm.clients = data.data;
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
         
         vm.SearchClients = function () {
@@ -42,7 +39,7 @@
             }
             return datacontext.searchClients(criteria).then(function (data) {
                 return vm.clients = data.data;
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
         
         vm.ViewServers = function (client) {
@@ -51,7 +48,7 @@
 
 
         vm.DeleteClient = function (client) {
-            if (confirm('Are sure want to delete this client?')) {
+            if (confirm('Are sure want to delete this client and all its Servers?')) {
                 var promises = [deleteClient(client)];
                 common.activateController(promises, controllerId);
             }
@@ -60,7 +57,7 @@
         function deleteClient(client) {
             return datacontext.deleteClient(client).then(function () {
                 vm.SearchClients();
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
         
         vm.EditClient = function (client) {

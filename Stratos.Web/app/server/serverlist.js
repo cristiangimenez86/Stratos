@@ -4,12 +4,10 @@
     angular.module('app').controller(controllerId, ['common', 'datacontext', '$location', '$routeParams', serverlist]);
 
     function serverlist(common, datacontext, $location, $routeParams) {
-        var getLogFn = common.logger.getLogFn;
-        var log = getLogFn(controllerId);
+        var logError = common.logger.getLogFn(controllerId, 'error');
 
         var vm = this;
         var clientId = ($routeParams.clientId) || 0;
-        
         vm.servers = [];
         
         activate();
@@ -29,12 +27,10 @@
         function deleteServer(server) {
             return datacontext.deleteServer(server).then(function () {
                 activate();
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
 
         vm.EditServer = function (server) {
-            console.log(clientId);
-            console.log(server);
             $location.path('/serverdetails/' + clientId + '/' + server);
         };
 
@@ -42,16 +38,10 @@
             $location.path('/serverdetails/' + clientId + '/' + 0);
         };
 
-        //function pageLoad() {
-        //    return datacontext.pageLoad().then(function (data) {
-        //        return vm.Clients = data;
-        //    });
-        //}
-
         function getServers() {
             return datacontext.getServers(clientId).then(function (data) {
                 return vm.servers = data.data;
-            });
+            }).catch(function () { logError("oops! Something went wrong."); });
         }
     }
 })();
