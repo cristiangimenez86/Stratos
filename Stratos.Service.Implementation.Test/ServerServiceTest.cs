@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Stratos.DataAccess.Repositories;
 using Stratos.DomainModel;
 using Stratos.Service.Contract;
 using Stratos.Service.Contract.DTOs;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Stratos.Service.Implementation.Test
 {
@@ -17,7 +14,6 @@ namespace Stratos.Service.Implementation.Test
     public class ServerServiceTest
     {
         private List<Server> _mockedServers;
-        private Server _mockedServer;
         private ServerService _serverService;
         private Mock<IRepository<Server>> _serverRepo;
         private Mock<IRepository<Client>> _clientRepo;
@@ -72,14 +68,6 @@ namespace Stratos.Service.Implementation.Test
                 },
             };
 
-            _mockedServer = new Server
-            {
-                Id = 4,
-                URL = "URL4",
-                Username = "Username4",
-                Password = "HashedPassword4"
-            };
-
             _serverRepo = new Mock<IRepository<Server>>();
             _clientRepo = new Mock<IRepository<Client>>();
             _cryptoService = new Mock<ICryptoService>();
@@ -87,7 +75,6 @@ namespace Stratos.Service.Implementation.Test
             _cryptoService.Setup(c => c.Decrypt("HashedPassword2")).Returns("Password2");
             _cryptoService.Setup(c => c.Encrypt("Password2")).Returns("HashedPassword2");
             _serverRepo.Setup(r => r.Save());
-
             _serverService = new ServerService(_serverRepo.Object, _clientRepo.Object, _cryptoService.Object);
         }
 
@@ -97,7 +84,6 @@ namespace Stratos.Service.Implementation.Test
             var actual = _serverService.GetServers(1);
 
             actual.Should().BeOfType<List<ServerDTO>>().And.HaveCount(2);
-
         }
 
         [TestMethod]

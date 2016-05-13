@@ -13,7 +13,6 @@ namespace Stratos.Service.Implementation.Test
     public class ClientServiceTest
     {
         private List<Client> _mockedclients;
-        private Client _mockedclient;
         private ClientService _service;
         private Mock<IRepository<Client>> _repo;
 
@@ -67,20 +66,9 @@ namespace Stratos.Service.Implementation.Test
                 }
             };
 
-            _mockedclient = new Client
-            {
-                Id = 3,
-                Name = "Name3",
-                Company = "Company3",
-                Email = "Email3",
-                Phone = "Phone3",
-            };
-
             _repo = new Mock<IRepository<Client>>();
             _repo.Setup(r => r.Query()).Returns(_mockedclients.AsQueryable());
             _repo.Setup(r => r.Save());
-            //_repo.Setup(r => r.Add(_mockedclient)).Returns(true);
-
             _service = new ClientService(_repo.Object);
         }
 
