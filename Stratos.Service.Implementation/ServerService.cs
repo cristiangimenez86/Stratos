@@ -25,7 +25,7 @@ namespace Stratos.Service.Implementation
 
         public IEnumerable<ServerDTO> GetServers(int clientId)
         {
-            var serversEntity = _serverRepository.Query().Where(x => x.ClientId == clientId).ToList();
+            var serversEntity = _serverRepository.Query().Where(x => x.Client.Id == clientId).ToList();
 
             var serversDto = serversEntity.Select(x => new ServerDTO
             {
