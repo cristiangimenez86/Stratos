@@ -25,7 +25,6 @@ namespace Stratos.Service.Implementation.Test
                 {
                     Id = 1,
                     Name = "Name1",
-                    Company = "Company1",
                     Email = "Email1",
                     Phone = "Phone1",
                     Servers = new List<Server>
@@ -50,7 +49,6 @@ namespace Stratos.Service.Implementation.Test
                 {
                     Id = 2,
                     Name = "Name2",
-                    Company = "Company2",
                     Email = "Email2",
                     Phone = "Phone2",
                     Servers = new List<Server>
@@ -88,7 +86,6 @@ namespace Stratos.Service.Implementation.Test
             {
                 new ClientDTO
                 {
-                    Company = "Company2",
                     Email = "Email2",
                     Id = 2,
                     Name = "Name2",
@@ -106,7 +103,6 @@ namespace Stratos.Service.Implementation.Test
         {
             var expected = new ClientDTO
                 {
-                    Company = "Company2",
                     Email = "Email2",
                     Id = 2,
                     Name = "Name2",
@@ -122,7 +118,6 @@ namespace Stratos.Service.Implementation.Test
         {
             var clientDto = new ClientDTO
             {
-                Company = "Company5",
                 Email = "Email5",
                 Id = 5,
                 Name = "Name5",
@@ -140,7 +135,6 @@ namespace Stratos.Service.Implementation.Test
         {
             var clientDto = new ClientDTO
             {
-                Company = "ModifiedCompany2",
                 Email = "ModifiedEmail2",
                 Id = 2,
                 Name = "ModifiedName2",

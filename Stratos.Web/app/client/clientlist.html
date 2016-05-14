@@ -41,7 +41,6 @@
                         <table class="table table-hover">
                             <tr style="background-color: lightgrey">
                                 <th>Name</th>
-                                <th>Company</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th></th>
@@ -50,7 +49,6 @@
                             </tr>
                             <tr ng-repeat="client in vm.clients | filter:vm.search_query">
                                 <td>{{client.name}}</td>
-                                <td>{{client.company}}</td>
                                 <td>{{client.email}}</td>
                                 <td>{{client.phone}}</td>
                                 <td>

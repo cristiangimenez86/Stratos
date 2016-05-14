@@ -13,7 +13,6 @@ namespace Stratos.DataAccess.Mappings
             HasKey(c => c.Id);
             Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(c => c.Name);
-            Property(c => c.Company);
             Property(c => c.Email);
             Property(c => c.Phone);
 

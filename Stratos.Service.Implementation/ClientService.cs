@@ -21,7 +21,7 @@ namespace Stratos.Service.Implementation
             var clientsEntity = _clientRepository.Query().Take(50).ToList();
 
             var clientsDto = clientsEntity.Select(
-                x => new ClientDTO { Company = x.Company, 
+                x => new ClientDTO {
                     Email = x.Email, 
                     Id = x.Id, Name = 
                     x.Name, 
@@ -44,7 +44,6 @@ namespace Stratos.Service.Implementation
                 {
                     Id = clientEntity.Id,
                     Name = clientEntity.Name,
-                    Company = clientEntity.Company,
                     Email = clientEntity.Email,
                     Phone = clientEntity.Phone
                 };
@@ -60,7 +59,6 @@ namespace Stratos.Service.Implementation
             var clientsDto = clientsEntity.Select(
                 x => new ClientDTO
                 {
-                    Company = x.Company,
                     Email = x.Email,
                     Id = x.Id,
                     Name = x.Name,
@@ -76,7 +74,6 @@ namespace Stratos.Service.Implementation
             var clientEntity = new Client
             {
                 Name = client.Name,
-                Company = client.Company,
                 Email = client.Email,
                 Phone = client.Phone
             };
@@ -92,7 +89,6 @@ namespace Stratos.Service.Implementation
             if (clientEntity != null)
             {
                 clientEntity.Name = client.Name;
-                clientEntity.Company = client.Company;
                 clientEntity.Email = client.Email;
                 clientEntity.Phone = client.Phone;
 

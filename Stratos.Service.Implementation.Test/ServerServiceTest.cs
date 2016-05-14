@@ -26,7 +26,6 @@ namespace Stratos.Service.Implementation.Test
             {
                 Id = 1,
                 Name = "Name1",
-                Company = "Company1",
                 Email = "Email1",
                 Phone = "Phone1"
             };
@@ -35,7 +34,6 @@ namespace Stratos.Service.Implementation.Test
             {
                 Id = 2,
                 Name = "Name2",
-                Company = "Company2",
                 Email = "Email2",
                 Phone = "Phone2"
             };
