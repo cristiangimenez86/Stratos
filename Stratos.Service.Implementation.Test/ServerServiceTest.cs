@@ -120,7 +120,7 @@ namespace Stratos.Service.Implementation.Test
         }
 
         [TestMethod]
-        public void SaveMethodWhenUpdateServerShouldBeCalledOnce()
+        public void UpdateAndSaveMethodWhenUpdateServerShouldBeCalledOnce()
         {
             var serverDto = new ServerDTO
             {
@@ -131,6 +131,7 @@ namespace Stratos.Service.Implementation.Test
             };
 
             _serverService.UpdateServer(serverDto);
+            _serverRepo.Verify(c => c.Update(It.IsAny<Server>()), Times.Once());
             _serverRepo.Verify(c => c.Save(), Times.Once());
         }
 

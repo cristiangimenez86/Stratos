@@ -83,6 +83,7 @@ namespace Stratos.Service.Implementation
                 serverEntity.Username = server.URL;
                 serverEntity.Password = _cryptoService.Encrypt(server.Password);
 
+                _serverRepository.Update(serverEntity);
                 _serverRepository.Save();
             }
         }

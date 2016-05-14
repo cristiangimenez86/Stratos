@@ -96,6 +96,7 @@ namespace Stratos.Service.Implementation
                 clientEntity.Email = client.Email;
                 clientEntity.Phone = client.Phone;
 
+                _clientRepository.Update(clientEntity);
                 _clientRepository.Save();
             }
         }

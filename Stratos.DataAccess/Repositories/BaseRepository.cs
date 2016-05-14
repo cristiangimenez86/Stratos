@@ -42,5 +42,11 @@ namespace Stratos.DataAccess.Repositories
         {
             _dbContext.Save();
         }
+
+        public bool Update(T entity)
+        {
+            _dbContext.Update(entity);
+            return true;
+        }
     }
 }

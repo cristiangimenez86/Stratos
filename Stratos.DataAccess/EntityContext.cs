@@ -44,5 +44,10 @@ namespace Stratos.DataAccess
         {
             return Set<T>();
         }
+
+        public void Update<T>(T entity) where T : class
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
     }
 }
